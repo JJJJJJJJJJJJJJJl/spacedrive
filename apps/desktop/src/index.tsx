@@ -1,13 +1,12 @@
 import { createClient } from '@rspc/client';
 import { TauriTransport } from '@rspc/tauri';
-import { OperatingSystem, Operations, PlatformProvider, queryClient, rspc } from '@sd/client';
+import { OperatingSystem, Operations } from '@sd/client';
 import SpacedriveInterface, { Platform } from '@sd/interface';
+import '@sd/ui/style';
 import { dialog, invoke, os } from '@tauri-apps/api';
 import { listen } from '@tauri-apps/api/event';
 import React, { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-
-import '@sd/ui/style';
 
 const client = createClient<Operations>({
 	transport: new TauriTransport()
@@ -50,18 +49,10 @@ function App() {
 		};
 	}, []);
 
-	return (
-		<rspc.Provider client={client} queryClient={queryClient}>
-			<PlatformProvider platform={platform}>
-				<SpacedriveInterface />
-			</PlatformProvider>
-		</rspc.Provider>
-	);
+	return <SpacedriveInterface rspcClient={client} platform={platform} />;
 }
 
-const root = createRoot(document.getElementById('root')!);
-
-root.render(
+createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<App />
 	</React.StrictMode>

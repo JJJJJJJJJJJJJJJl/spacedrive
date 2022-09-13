@@ -1,7 +1,6 @@
+import { useBridgeQuery, useExplorerStore } from '../index';
 import { PropsWithChildren, createContext, useCallback, useContext, useMemo } from 'react';
 import { proxy, useSnapshot } from 'valtio';
-
-import { useBridgeQuery, useExplorerStore } from '../index';
 
 // The name of the localStorage key for caching library data
 const libraryCacheLocalStorageKey = 'sd-library-list';

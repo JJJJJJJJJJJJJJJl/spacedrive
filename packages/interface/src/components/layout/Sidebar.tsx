@@ -1,3 +1,9 @@
+import { useOperatingSystem } from '../../hooks/useOperatingSystem';
+import CreateLibraryDialog from '../dialog/CreateLibraryDialog';
+import { Folder } from '../icons/Folder';
+import { JobsManager } from '../jobs/JobManager';
+import RunningJobsWidget from '../jobs/RunningJobsWidget';
+import { MacTrafficLights } from '../os/TrafficLights';
 import { CogIcon, LockClosedIcon, PhotoIcon } from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import { useCurrentLibrary, useLibraryMutation, useLibraryQuery, usePlatform } from '@sd/client';
@@ -6,13 +12,6 @@ import { Button, Dropdown, OverlayPanel } from '@sd/ui';
 import clsx from 'clsx';
 import { CheckCircle, CirclesFour, Planet, WaveTriangle } from 'phosphor-react';
 import { NavLink, NavLinkProps, useNavigate } from 'react-router-dom';
-
-import { useOperatingSystem } from '../../hooks/useOperatingSystem';
-import CreateLibraryDialog from '../dialog/CreateLibraryDialog';
-import { Folder } from '../icons/Folder';
-import { JobsManager } from '../jobs/JobManager';
-import RunningJobsWidget from '../jobs/RunningJobsWidget';
-import { MacTrafficLights } from '../os/TrafficLights';
 
 export const SidebarLink = (props: NavLinkProps & { children: React.ReactNode }) => (
 	<NavLink {...props}>
@@ -234,14 +233,10 @@ export function Sidebar() {
 
 			{library && <RunningJobsWidget />}
 
-			<div className="mt-2 mb-2">
+			<div className="mt-2 mb-2 space-x-2">
 				<NavLink to="/settings/general">
 					{({ isActive }) => (
-						<Button
-							noPadding
-							variant={'default'}
-							className={clsx('px-[4px] hover:!bg-opacity-20 mb-1')}
-						>
+						<Button noPadding variant="gray" className={clsx('px-[4px] hover:!bg-opacity-20 mb-1')}>
 							<CogIcon className="w-5 h-5" />
 						</Button>
 					)}

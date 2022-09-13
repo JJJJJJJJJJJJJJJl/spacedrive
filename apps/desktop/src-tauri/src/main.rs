@@ -20,6 +20,8 @@ mod menu;
 async fn app_ready(app_handle: tauri::AppHandle) {
 	let window = app_handle.get_window("main").unwrap();
 
+    println!("plz");
+
 	window.show().unwrap();
 }
 

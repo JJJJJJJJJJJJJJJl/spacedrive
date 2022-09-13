@@ -1,8 +1,8 @@
-import { RSPCError } from '@rspc/client';
+import { useCurrentLibrary } from './index';
+import { Client, RSPCError } from '@rspc/client';
 import { createReactQueryHooks } from '@rspc/react';
 import { LibraryArgs, Operations } from '@sd/core';
 import {
-	QueryClient,
 	UseInfiniteQueryOptions,
 	UseInfiniteQueryResult,
 	UseMutationOptions,
@@ -12,9 +12,8 @@ import {
 	useMutation as _useMutation
 } from '@tanstack/react-query';
 
-import { useCurrentLibrary } from './index';
+export type RspcClient = Client<Operations>;
 
-export const queryClient = new QueryClient();
 export const rspc = createReactQueryHooks<Operations>();
 
 type NonLibraryQueries = Exclude<Operations['queries'], { key: [any, LibraryArgs<any>] }> &

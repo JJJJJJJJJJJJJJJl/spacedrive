@@ -1,6 +1,5 @@
-import { Platform } from '@sd/client';
-
 import SpacedriveInterface from './App';
+import { Platform } from '@sd/client';
 
 export type { Platform };
 
